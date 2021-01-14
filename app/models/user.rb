@@ -26,11 +26,17 @@
 
 # ----------上2つ、結果は同じ
 
+# class User < ApplicationRecord
+#   before_save do
+#     puts '１番目に呼ばれたコールバック'
+#   end
+#   before_save do
+#     puts '２番目に呼ばれたコールバック'
+#   end
+# end
+
+#------------------
+
 class User < ApplicationRecord
-  before_save do
-    puts '１番目に呼ばれたコールバック'
-  end
-  before_save do
-    puts '２番目に呼ばれたコールバック'
-  end
+  before_create CreateAgeAtCallback.new
 end
